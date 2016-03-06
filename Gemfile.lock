@@ -1,3 +1,67 @@
+GIT
+  remote: git://github.com/MiniProfiler/rack-mini-profiler.git
+  revision: 77b2c67105278e3eada60da942b8f2aabca36bec
+  specs:
+    rack-mini-profiler (0.9.9.2)
+      rack (>= 1.2.0)
+
+GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 3258d255f73b9b0a4cdfd74d227c34e95fb53433
+  specs:
+    ransack (1.7.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.2)
+
+GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 1002b14aee62d4360c383ae1f14f5b5b72e76e2a
+  branch: 0-17-stable
+  specs:
+    kaminari (0.17.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
+  remote: git://github.com/audionerd/draper.git
+  revision: e816e0e5876b76c648c0928f1c3f2aa2c7a3d1f2
+  ref: e816e0e587
+  branch: rails5
+  specs:
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
+
+GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: 9a1e518fc03c7260ad7b0345ba7915c4643bad1a
+  specs:
+    formtastic (3.2.0.pre)
+      actionpack (>= 3.2.13)
+
+GIT
+  remote: git://github.com/pschambacher/database_cleaner.git
+  revision: 8dd9fa407c98aa3a56b641792cb6df15d70435ff
+  ref: 8dd9fa4
+  branch: rails5.0
+  specs:
+    database_cleaner (1.5.1)
+
+GIT
+  remote: git://github.com/rails/activemodel-serializers-xml.git
+  revision: ad5ff3a9262576362792196a991de1d1778c5f48
+  specs:
+    activemodel-serializers-xml (1.0.0)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +103,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.0.0)
+    bcrypt (3.1.11)
     builder (3.2.2)
     byebug (8.2.2)
     coffee-rails (4.1.1)
@@ -50,6 +115,13 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
     debug_inspector (0.0.2)
+    devise (4.0.0.rc1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
     ffi (1.9.10)
@@ -79,6 +151,9 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    orm_adapter (0.5.0)
+    polyamorous (1.3.0)
+      activerecord (>= 3.0)
     puma (3.0.2)
     rack (2.0.0.alpha)
       json
@@ -114,9 +189,29 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    request_store (1.3.0)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     roo (2.3.2)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
+    rspec-core (3.5.0.beta1)
+      rspec-support (= 3.5.0.beta1)
+    rspec-expectations (3.5.0.beta1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.beta1)
+    rspec-mocks (3.5.0.beta1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.beta1)
+    rspec-rails (3.5.0.beta1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (= 3.5.0.beta1)
+      rspec-expectations (= 3.5.0.beta1)
+      rspec-mocks (= 3.5.0.beta1)
+      rspec-support (= 3.5.0.beta1)
+    rspec-support (3.5.0.beta1)
     rubyzip (1.2.0)
     sass (3.4.21)
     sass-rails (5.0.4)
@@ -148,6 +243,8 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (3.1.1)
       activemodel (>= 4.2)
       debug_inspector
@@ -160,14 +257,23 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel-serializers-xml!
   byebug
   coffee-rails (~> 4.1.0)
+  database_cleaner!
+  devise (> 4.x)
+  draper!
+  formtastic!
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari!
   listen (~> 3.0.5)
   puma
+  rack-mini-profiler!
   rails (>= 5.0.0.beta3, < 5.1)
+  ransack!
   roo
+  rspec-rails (>= 3.5.0.beta1)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

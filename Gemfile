@@ -49,3 +49,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Access Microsoft Excel files
 gem 'roo'
+
+# Active Admin
+gem 'devise',      '> 4.x'
+gem 'rspec-rails', '>= 3.5.0.beta1'
+gem 'ransack',    github: 'activerecord-hackery/ransack'
+gem 'kaminari',   github: 'amatsuda/kaminari', branch: '0-17-stable'
+gem 'formtastic', github: 'justinfrench/formtastic'
+gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
+# To fix a Draper deprecation error
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+# Optional -- only if you already include these gems
+gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
+gem 'database_cleaner',            github: 'pschambacher/database_cleaner', branch: 'rails5.0', ref: '8dd9fa4'
