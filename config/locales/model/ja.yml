@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       admin_user: 管理者
+      meal: 食事
+      dish: 単品
       comment: コメント
       name: 名前
     attributes:
@@ -10,6 +12,22 @@ ja:
         current_sign_in_at: 最新ログイン日時
         sign_in_count: ログイン回数
         created_at: 作成日時
+      meal:
+        served_on: 日付
+        meal_type: 種別
+        calorie: カロリー(kcal)
+        protein: たんぱく質(g)
+        fat: 脂肪(g)
+        carbohydrate: 炭水化物(g)
+        salt: 塩分(g)
+        created_at: 作成日時
+        updated_at: 更新日時
+      dish:
+        meal: 食事ID
+        name: 名前
+        calorie: カロリー(kcal)
+        created_at: 作成日時
+        updated_at: 更新日時
       name:
         name: 名前
         date: 日付
