@@ -51,6 +51,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'roo'
 
 # Active Admin
+gem 'activeadmin', github: 'activeadmin'
 gem 'devise',      '> 4.x'
 gem 'rspec-rails', '>= 3.5.0.beta1'
 gem 'ransack',    github: 'activerecord-hackery/ransack'
