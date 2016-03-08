@@ -3,11 +3,9 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
+    form action:"/upload", method:"post", enctype:"multipart/form-data", id:"uploadForm" do
+      input name:"attachment", type:"file"
+      input type:"submit", id:"uploadButton"
     end
 
     # Here is an example of a simple dashboard with columns and panels.
