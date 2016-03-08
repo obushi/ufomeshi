@@ -1,6 +1,6 @@
-ActiveAdmin.register Meal do
+ActiveAdmin.register Dish do
 
-  menu priority: 2
+  menu priority: 3
 
   actions :index, :edit
 # See permitted parameters documentation:
