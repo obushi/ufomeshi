@@ -5,7 +5,7 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc{ I18n.t("active_admin.dashboard") } do
     form action: "/menu", method: :post, enctype: "multipart/form-data" do |f|
       f.input name: "authenticity_token", type: :hidden, value: form_authenticity_token.to_s
-      f.input name: "attachment", type: :file
+      f.input name: "attachment", type: :file, accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       f.input type: :submit
     end
 
