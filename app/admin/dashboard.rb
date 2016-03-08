@@ -3,9 +3,10 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
-    form action:"/upload", method:"post", enctype:"multipart/form-data", id:"uploadForm" do
-      input name:"attachment", type:"file"
-      input type:"submit", id:"uploadButton"
+    form action: "/menu", method: :post, enctype: "multipart/form-data" do |f|
+      f.input name: "authenticity_token", type: :hidden, value: form_authenticity_token.to_s
+      f.input name: "attachment", type: :file
+      f.input type: :submit
     end
 
     # Here is an example of a simple dashboard with columns and panels.
