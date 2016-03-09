@@ -65,3 +65,6 @@ gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
 gem 'database_cleaner',            github: 'pschambacher/database_cleaner', branch: 'rails5.0', ref: '8dd9fa4'
 
 gem 'active_skin'
+
+# To detect change at a specified directory
+gem 'fssm'
