@@ -16,5 +16,10 @@ module Meali
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.menu_root = "tmp/menu"
+
+    # config.after_initialize do
+    #   MenuUtils::Watchdog.new(config.menu_root, "csv")
+    # end
   end
 end
