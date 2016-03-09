@@ -4,7 +4,7 @@ require 'json'
 
 module MenuUtils
   class FileImporter
-    attr_reader :path, :csv
+    attr_reader :path
 
     def initialize(source_path)
       @path = source_path
@@ -12,8 +12,7 @@ module MenuUtils
 
     def to_csv
       begin
-        # p Roo::Excelx.new(@path).sheets.first
-        @csv = Roo::Excelx.new(@path).to_csv
+        Roo::Excelx.new(@path).to_csv(@path+".csv")
       rescue => e
         raise "ファイルの変換に失敗しました。\n#{e.message}"
         logger.fatal "Time: #{Time.now}, Message: #{e.message}"

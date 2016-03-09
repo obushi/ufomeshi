@@ -22,3 +22,5 @@
 
 # Ignore bundler-installed gems
 /vendor/bundle/*
+
+.DS_Store
