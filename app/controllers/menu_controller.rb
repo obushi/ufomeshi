@@ -8,7 +8,7 @@ class MenuController < ApplicationController
       FileUtils.mv( file.path, File.join(@@StoreDir, file.original_filename))
 
       begin
-        MenuUtils.import(File.join(@@StoreDir, file.original_filename))
+        csv = MenuUtils::FileImporter.new(File.join(@@StoreDir, file.original_filename)).to_csv
         redirect_to :back, notice: "成功"
       rescue => e
         redirect_to :back, alert: "エラー:#{e.message}"
