@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: 77b2c67105278e3eada60da942b8f2aabca36bec
-  specs:
-    rack-mini-profiler (0.9.9.2)
-      rack (>= 1.2.0)
-
-GIT
   remote: git://github.com/activeadmin/activeadmin.git
   revision: f7483e3b8fcd74437b03c18fb658dac62a9fc62e
   specs:
@@ -62,14 +55,6 @@ GIT
   specs:
     formtastic (3.2.0.pre)
       actionpack (>= 3.2.13)
-
-GIT
-  remote: git://github.com/pschambacher/database_cleaner.git
-  revision: 8dd9fa407c98aa3a56b641792cb6df15d70435ff
-  ref: 8dd9fa4
-  branch: rails5.0
-  specs:
-    database_cleaner (1.5.1)
 
 GIT
   remote: git://github.com/rails/activemodel-serializers-xml.git
@@ -299,7 +284,6 @@ DEPENDENCIES
   activemodel-serializers-xml!
   byebug
   coffee-rails (~> 4.1.0)
-  database_cleaner!
   devise (> 4.x)
   draper!
   formtastic!
@@ -309,7 +293,6 @@ DEPENDENCIES
   kaminari!
   listen (~> 3.0.5)
   puma
-  rack-mini-profiler!
   rails (>= 5.0.0.beta3, < 5.1)
   ransack!
   roo

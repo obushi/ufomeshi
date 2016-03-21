@@ -60,9 +60,6 @@ gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
 # To fix a Draper deprecation error
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-# Optional -- only if you already include these gems
-gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
-gem 'database_cleaner',            github: 'pschambacher/database_cleaner', branch: 'rails5.0', ref: '8dd9fa4'
 
 gem 'active_skin'
 
