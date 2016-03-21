@@ -1,5 +1,5 @@
 listener = Listen.to(Meali::Application.config.menu_root) do |modified, added, removed|
-  MenuUtils::MenuExtractor.new(added.first).extract if File.extname(added.first.to_s) == ".csv"
+  Meal.convert(added.first) if File.extname(added.first.to_s) == ".xlsx"
 end
 
 listener.start
