@@ -22,12 +22,8 @@ module MenuUtils
 
     def dish_ranges_of date
       daily_meal_at = []
-      @meal_header[Breakfast..Dinner].each_with_index do |h, i|
-        menu_first = @meal_header[i]
-        menu_last  = @meal_header[i+1]-1 # 最後のメニュー = 次の食事が始まるひとつ前のメニュー
-        if @csv.by_col[date][Range.new(menu_first, menu_last)].join.include?("KC")
-          daily_meal_at << Range.new(menu_first, menu_last)
-        end
+      @meal_header.each do |range|
+        daily_meal_at << range if @csv.by_col[date][range].join.include?("KC")
       end
       daily_meal_at
     end
@@ -50,12 +46,16 @@ module MenuUtils
     end
 
     def meal_head
-      head = []
+      head   = []
+      ranges = []
       meal_types = %w(朝 昼 夕)
       @csv.to_a.transpose.select{ |e| e.join =~ include_all?(meal_types) }.first&.each_with_index do |m, i|
         head << i-1 if m =~ /.*[[朝|昼|夕].*食]|合.*計.*/
       end
-      head
+      head.each_cons(2) do |arr|
+        ranges << Range.new(arr[0], arr[1]-1)
+      end
+      ranges
     end
 
     def include_all? arr
