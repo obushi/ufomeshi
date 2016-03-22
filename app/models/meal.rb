@@ -23,9 +23,10 @@ class Meal < ApplicationRecord
         daily_nutrient = menu.nutrient_of(date, range)
         daily_dishes   = menu.dishes_of(  date, range)
 
-        meal              = Meal.new
-        meal.served_on    = Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i)
-        meal.meal_type    = menu.ranges.index(range)
+        d = Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i)
+        t = menu.ranges.index(range)
+
+        meal              = Meal.where(served_on: d, meal_type: t).first_or_initialize
         meal.calorie      = menu.value_of(daily_nutrient, :calorie      )
         meal.protein      = menu.value_of(daily_nutrient, :protein      )
         meal.fat          = menu.value_of(daily_nutrient, :fat          )
@@ -33,7 +34,7 @@ class Meal < ApplicationRecord
         meal.salt         = menu.value_of(daily_nutrient, :salt         )
 
         daily_dishes.each do |daily_dish|
-          dish = Dish.new
+          dish         = Dish.new
           dish.name    = daily_dish[0]
           dish.calorie = daily_dish[1][/(\d+)KC/, 1]
           dish.meal    = meal
