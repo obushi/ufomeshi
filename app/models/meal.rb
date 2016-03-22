@@ -19,20 +19,27 @@ class Meal < ApplicationRecord
   def self.register(menu)
     dates = menu.csv_header.select{ |e| e =~ /\d+\/\d+/ }
     dates.each do |date|
-      daily_dishes = menu.daily_dishes_of(date)
-      menu.dish_ranges_of(date).each do |dish_range|
-        nutrient = daily_dishes[0][dish_range].select{ |menu| menu =~ /\d+KC.*た\d+.*脂\d+.*炭\d+.*塩\d+\.\d+/ }.first
-        dishes = [daily_dishes[0][dish_range], daily_dishes[1][dish_range]].transpose.select{ |menu| menu[1] =~ /\d+KC/ }
-        
+      menu.ranges_of(date).each do |range|
+        daily_nutrient = menu.nutrient_of(date, range)
+        daily_dishes   = menu.dishes_of(  date, range)
+
         meal              = Meal.new
         meal.served_on    = Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i)
-        meal.meal_type    = menu.meal_header.index(dish_range)
-        meal.calorie      = menu.nutrient_of(:calorie,      nutrient)
-        meal.protein      = menu.nutrient_of(:protein,      nutrient)
-        meal.fat          = menu.nutrient_of(:fat,          nutrient)
-        meal.carbohydrate = menu.nutrient_of(:carbohydrate, nutrient)
-        meal.salt         = menu.nutrient_of(:salt,         nutrient)
-        p meal
+        meal.meal_type    = menu.ranges.index(range)
+        meal.calorie      = menu.value_of(daily_nutrient, :calorie      )
+        meal.protein      = menu.value_of(daily_nutrient, :protein      )
+        meal.fat          = menu.value_of(daily_nutrient, :fat          )
+        meal.carbohydrate = menu.value_of(daily_nutrient, :carbohydrate )
+        meal.salt         = menu.value_of(daily_nutrient, :salt         )
+        # p meal
+
+        daily_dishes.each do |daily_dish|
+          dish = Dish.new
+          dish.name = daily_dish[0]
+          dish.calorie = daily_dish[1][/(\d+)KC/, 1]
+          dish.meal = meal
+          dish.save
+        end
       end
     end
   end
