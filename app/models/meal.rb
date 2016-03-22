@@ -31,13 +31,12 @@ class Meal < ApplicationRecord
         meal.fat          = menu.value_of(daily_nutrient, :fat          )
         meal.carbohydrate = menu.value_of(daily_nutrient, :carbohydrate )
         meal.salt         = menu.value_of(daily_nutrient, :salt         )
-        # p meal
 
         daily_dishes.each do |daily_dish|
           dish = Dish.new
-          dish.name = daily_dish[0]
+          dish.name    = daily_dish[0]
           dish.calorie = daily_dish[1][/(\d+)KC/, 1]
-          dish.meal = meal
+          dish.meal    = meal
           dish.save
         end
       end
