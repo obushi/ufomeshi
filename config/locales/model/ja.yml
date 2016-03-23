@@ -22,6 +22,7 @@ ja:
         salt: 塩分(g)
         created_at: 作成日時
         updated_at: 更新日時
+        dish: 単品ID
       dish:
         meal: 食事ID
         name: 名前

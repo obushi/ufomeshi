@@ -34,7 +34,8 @@ module MenuUtils
 
     def dishes_of(date, range)
       daily_dishes = daily_dishes_of(date)
-      [daily_dishes[0][range], daily_dishes[1][range]].transpose.select{ |menu| menu[1] =~ /\d+KC/ }
+      [daily_dishes[0][range], daily_dishes[1][range]].transpose
+      .select{ |menu| menu[0].present? && menu[1] =~ /([1-9]|\d{2,})+KC/ }
     end
 
     private
