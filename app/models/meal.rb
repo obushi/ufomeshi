@@ -34,7 +34,7 @@ class Meal < ApplicationRecord
         meal.salt         = menu.value_of(daily_nutrient, :salt         )
 
         daily_dishes.each do |daily_dish|
-          dish = Dish.where(name:    daily_dish[0],
+          dish = Dish.where(name:    daily_dish[0].gsub(/(\s|　)+/, ""),
                             calorie: daily_dish[1][/(\d+)KC/, 1],
                             meal:    meal ).first_or_create
         end
