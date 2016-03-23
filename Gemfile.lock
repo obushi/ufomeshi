@@ -136,7 +136,6 @@ GEM
     execjs (2.6.0)
     ffi (1.9.10)
     formtastic_i18n (0.5.0)
-    fssm (0.2.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     has_scope (0.6.0)
@@ -287,7 +286,6 @@ DEPENDENCIES
   devise (> 4.x)
   draper!
   formtastic!
-  fssm
   jbuilder (~> 2.0)
   jquery-rails
   kaminari!

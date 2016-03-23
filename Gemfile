@@ -62,6 +62,3 @@ gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 
 gem 'active_skin'
-
-# To detect change at a specified directory
-gem 'fssm'

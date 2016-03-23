@@ -26,12 +26,13 @@ class Meal < ApplicationRecord
         d = Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i)
         t = menu.ranges.index(range)
 
-        meal              = Meal.where(served_on: d, meal_type: t).first_or_create
+        meal              = Meal.where(served_on: d, meal_type: t).first_or_initialize
         meal.calorie      = menu.value_of(daily_nutrient, :calorie      )
         meal.protein      = menu.value_of(daily_nutrient, :protein      )
         meal.fat          = menu.value_of(daily_nutrient, :fat          )
         meal.carbohydrate = menu.value_of(daily_nutrient, :carbohydrate )
         meal.salt         = menu.value_of(daily_nutrient, :salt         )
+        meal.save
 
         daily_dishes.each do |daily_dish|
           dish = Dish.where(name:    daily_dish[0].gsub(/(\s|　)+/, ""),
