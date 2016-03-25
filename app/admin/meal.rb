@@ -3,7 +3,6 @@ ActiveAdmin.register Meal do
   menu priority: 2
 
   permit_params :served_on, :meal_type, :calorie, :protein, :fat, :carbohydrate, :salt
-  config.filters = false
 
   index do
     id_column
@@ -25,4 +24,12 @@ ActiveAdmin.register Meal do
     end
     actions
   end
+
+  filter :served_on
+  filter :meal_type
+  filter :calorie
+  filter :protein
+  filter :fat
+  filter :carbohydrate
+  filter :salt
 end

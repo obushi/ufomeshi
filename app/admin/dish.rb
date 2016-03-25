@@ -3,7 +3,6 @@ ActiveAdmin.register Dish do
   menu priority: 3
 
   permit_params :name, :calorie
-  config.filters = false
 
   index do
     id_column
@@ -21,4 +20,8 @@ ActiveAdmin.register Dish do
     end
     actions
   end
+
+  filter :name
+  filter :calorie
+  filter :meal_id
 end
