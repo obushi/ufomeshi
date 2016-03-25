@@ -59,3 +59,11 @@ ja:
             salt:
               greater_than_or_equal_to: 0.1以上の小数を入力して下さい
               not_a_number: 0.1以上の小数を入力して下さい
+        dish:
+          attributes:
+            name:
+              blank: 名前を入力して下さい
+            calorie:
+              blank: カロリー(kcal)を入力して下さい
+              greater_than_or_equal_to: 1以上の整数を入力して下さい
+              not_a_number: 1以上の整数を入力して下さい

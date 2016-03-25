@@ -16,7 +16,6 @@ ActiveAdmin.register Dish do
     inputs do
       input :name
       input :calorie
-      input :meal_id
     end
     actions
   end

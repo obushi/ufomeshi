@@ -14,6 +14,8 @@ class Meal < ApplicationRecord
   # 正の小数
   validates :salt, numericality: { greater_than_or_equal_to: 0.1 }
 
+  validates_associated :dishes
+
   # 現在から先の献立
   scope :from_now, -> { where('date >= ?', Date.today) }
 
