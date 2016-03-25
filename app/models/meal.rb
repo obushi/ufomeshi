@@ -1,6 +1,18 @@
 class Meal < ApplicationRecord
   has_many :dishes
+  accepts_nested_attributes_for :dishes
+
   enum meal_type: %w{breakfast lunch dinner}
+
+  # 必須かつ一意
+  validates :served_on, :meal_type, presence: true
+  validates_uniqueness_of :served_on, scope: :meal_type
+
+  # 自然数
+  validates :calorie, :protein, :fat, :carbohydrate, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+
+  # 正の小数
+  validates :salt, numericality: { greater_than_or_equal_to: 0.1 }
 
   # 現在から先の献立
   scope :from_now, -> { where('date >= ?', Date.today) }
@@ -23,22 +35,22 @@ class Meal < ApplicationRecord
         daily_nutrient = menu.nutrient_of(date, range)
         daily_dishes   = menu.dishes_of(  date, range)
 
-        d = Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i)
-        t = menu.ranges.index(range)
+        params = {
+          served_on:     Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i),
+          meal_type:     menu.ranges.index(range),
+          calorie:       menu.value_of(daily_nutrient, :calorie      ),
+          protein:       menu.value_of(daily_nutrient, :protein      ),
+          fat:           menu.value_of(daily_nutrient, :fat          ),
+          carbohydrate:  menu.value_of(daily_nutrient, :carbohydrate ),
+          salt:          menu.value_of(daily_nutrient, :salt         ),
 
-        meal              = Meal.where(served_on: d, meal_type: t).first_or_initialize
-        meal.calorie      = menu.value_of(daily_nutrient, :calorie      )
-        meal.protein      = menu.value_of(daily_nutrient, :protein      )
-        meal.fat          = menu.value_of(daily_nutrient, :fat          )
-        meal.carbohydrate = menu.value_of(daily_nutrient, :carbohydrate )
-        meal.salt         = menu.value_of(daily_nutrient, :salt         )
-        meal.save
+          dishes_attributes:
+            daily_dishes.map { |dish| {
+              name:    dish[0].gsub(/(\s|　)+/, ""),
+              calorie: dish[1][/(\d+)KC/, 1]}}
+        }
 
-        daily_dishes.each do |daily_dish|
-          dish = Dish.where(name:    daily_dish[0].gsub(/(\s|　)+/, ""),
-                            calorie: daily_dish[1][/(\d+)KC/, 1],
-                            meal:    meal ).first_or_create
-        end
+        meal = Meal.create(params)
       end
     end
   end

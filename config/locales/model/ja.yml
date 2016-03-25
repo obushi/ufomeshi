@@ -36,3 +36,26 @@ ja:
         date: 日付
         created_at: 作成日時
         updated_at: 更新日時
+    errors:
+      models:
+        meal:
+          attributes:
+            served_on:
+              blank: 日付を選択して下さい
+            meal_type:
+              blank: 食事の種別を選択して下さい
+            calorie:
+              greater_than_or_equal_to: 1以上の整数を入力して下さい
+              not_a_number: 1以上の整数を入力して下さい
+            protein:
+              greater_than_or_equal_to: 1以上の整数を入力して下さい
+              not_a_number: 1以上の整数を入力して下さい
+            fat:
+              greater_than_or_equal_to: 1以上の整数を入力して下さい
+              not_a_number: 1以上の整数を入力して下さい
+            carbohydrate:
+              greater_than_or_equal_to: 1以上の整数を入力して下さい
+              not_a_number: 1以上の整数を入力して下さい
+            salt:
+              greater_than_or_equal_to: 0.1以上の小数を入力して下さい
+              not_a_number: 0.1以上の小数を入力して下さい
