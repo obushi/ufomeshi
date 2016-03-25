@@ -36,18 +36,17 @@ class Meal < ApplicationRecord
         daily_dishes   = menu.dishes_of(  date, range)
 
         params = {
-          served_on:     Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i),
-          meal_type:     menu.ranges.index(range),
-          calorie:       menu.value_of(daily_nutrient, :calorie      ),
-          protein:       menu.value_of(daily_nutrient, :protein      ),
-          fat:           menu.value_of(daily_nutrient, :fat          ),
-          carbohydrate:  menu.value_of(daily_nutrient, :carbohydrate ),
-          salt:          menu.value_of(daily_nutrient, :salt         ),
+          served_on:    Date.new(Date.today.year, date.split("/")[0].to_i, date.split("/")[1].to_i),
+          meal_type:    menu.ranges.index(range),
+          calorie:      menu.value_of(daily_nutrient, :calorie      ),
+          protein:      menu.value_of(daily_nutrient, :protein      ),
+          fat:          menu.value_of(daily_nutrient, :fat          ),
+          carbohydrate: menu.value_of(daily_nutrient, :carbohydrate ),
+          salt:         menu.value_of(daily_nutrient, :salt         ),
 
           dishes_attributes:
-            daily_dishes.map { |dish| {
-              name:    dish[0].gsub(/(\s|　)+/, ""),
-              calorie: dish[1][/(\d+)KC/, 1]}}
+            daily_dishes.map { |dish| { name: dish[0].gsub(/(\s|　)+/, ""),
+                                        calorie: dish[1][/(\d+)KC/, 1] }}
         }
 
         meal = Meal.create(params)
