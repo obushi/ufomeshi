@@ -1,5 +1,4 @@
 ActiveAdmin.register Meal do
-
   menu priority: 2
 
   permit_params :served_on, :meal_type, :calorie, :protein, :fat, :carbohydrate, :salt

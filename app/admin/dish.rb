@@ -1,5 +1,4 @@
 ActiveAdmin.register Dish do
-
   menu priority: 3
 
   permit_params :name, :calorie
