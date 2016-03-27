@@ -10,6 +10,15 @@ ActiveAdmin.register_page "Dashboard" do
             f.input type: :submit
           end
         end
+        panel "アップロードの履歴" do
+          table_for ConvertStatus.order('uploaded_at desc').limit(10) do
+            column("ステータス")      {|file| status_tag(file.status) }
+            column("アップロード日時") {|file| file.uploaded_at }
+            column("ファイル名")      {|file| file.file_name }
+            column("開始日")         {|file| file.start_on }
+            column("終了日")         {|file| file.end_on }
+          end
+        end
       end
       column do
         panel "Mealiについて" do

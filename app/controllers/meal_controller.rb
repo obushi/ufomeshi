@@ -12,7 +12,6 @@ class MealController < ApplicationController
       rescue => e
         redirect_back(fallback_location: "/admin/dashboard", alert: "エラー:#{e.message}")
       end
-
     else
       redirect_back(fallback_location: "/admin/dashboard", alert: "献立ファイルを選択してください")
     end

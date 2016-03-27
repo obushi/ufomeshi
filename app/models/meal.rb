@@ -20,14 +20,22 @@ class Meal < ApplicationRecord
   scope :from_now, -> { where('date >= ?', Date.today) }
 
   def self.convert(path)
+    convert_status = ConvertStatus.new(
+      file_name:   File::basename(path),
+      uploaded_at: Time.now)
     begin
       Roo::Excelx.new(path).to_csv(path+".csv")
       menu_data = MenuUtils::Extractor.new(path+".csv")
       register(menu_data)
+      convert_status.start_on = menu_data.dates.first
+      convert_status.end_on   = menu_data.dates.last
+      convert_status.status   = 0
     rescue => e
       raise "献立ファイルの登録に失敗しました。\n#{e.message}"
       logger.fatal "Time: #{Time.now}, Message: #{e.message}"
+      convert_status.status = 1
     end
+    convert_status.save
   end
 
   def self.register(menu)

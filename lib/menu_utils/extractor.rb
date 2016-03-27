@@ -16,6 +16,12 @@ module MenuUtils
       daily_meal_at = @ranges.select{ |r| @csv.by_col[date][r].join.include?("KC") }
     end
 
+    def dates
+      @csv_header
+        .select{ |e| e =~ /\d+\/\d+/ }
+        .map { |d| Date.new(Date.today.year, d.split("/")[0].to_i, d.split("/")[1].to_i) }.sort
+    end
+
     def value_of(nutrient, nutrient_type)
       case nutrient_type
       when :calorie;      nutrient[/(\d+)KC/, 1].to_i
