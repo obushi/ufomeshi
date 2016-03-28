@@ -1,3 +1,3 @@
 class ConvertStatus < ApplicationRecord
-    enum status: %w{success fail}
+    enum status: %w{ok warning}
 end
