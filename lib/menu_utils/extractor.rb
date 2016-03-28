@@ -44,17 +44,21 @@ module MenuUtils
       .select{ |menu| menu[0].present? && menu[1] =~ /([1-9]|\d{2,})+KC/ }
     end
 
+    def valid?
+      @ranges.present? && @csv_header.present?
+    end
+
     private
     def header
       week_days = %w(日 月 火 水 木 金 土)
-      CSV.read(@csv_path).select{ |e| e.join =~ include_all?(week_days) }.first
+      CSV.read(@csv_path).select{ |e| e.join =~ include_all(week_days) }.first
     end
 
     def menu_ranges
       head   = []
       ranges = []
       meal_types = %w(朝 昼 夕)
-      @csv.to_a.transpose.select{ |e| e.join =~ include_all?(meal_types) }.first&.each_with_index do |m, i|
+      @csv.to_a.transpose.select{ |e| e.join =~ include_all(meal_types) }.first&.each_with_index do |m, i|
         head << i-1 if m =~ /.*[[朝|昼|夕].*食]|合.*計.*/
       end
       head.each_cons(2) do |arr|
@@ -63,7 +67,7 @@ module MenuUtils
       ranges
     end
 
-    def include_all? arr
+    def include_all arr
       /(?=.*#{arr.join(')(?=.*')})/
     end
 

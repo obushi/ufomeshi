@@ -27,18 +27,23 @@ class Meal < ApplicationRecord
       Roo::Excelx.new(path).to_csv(path+".csv")
       menu_data = MenuUtils::Extractor.new(path+".csv")
       register(menu_data)
+
+      # 例外が発生せず、成功したときは 献立の開始・終了日およびステータス：正常 を記録
       convert_status.start_on = menu_data.dates.first
       convert_status.end_on   = menu_data.dates.last
       convert_status.status   = 0
     rescue => e
-      raise "献立ファイルの登録に失敗しました。\n#{e.message}"
-      logger.fatal "Time: #{Time.now}, Message: #{e.message}"
-      convert_status.status = 1
+      # 例外が発生したので 変換のステータス：異常 を記録
+      convert_status.status   = 1
+      logger.error "Time: #{Time.now}, Message: #{e.message}"
+    ensure
+      convert_status.save
     end
-    convert_status.save
   end
 
   def self.register(menu)
+    raise "献立ファイルが不正です。" unless menu.valid?
+
     dates = menu.csv_header.select{ |e| e =~ /\d+\/\d+/ }
     dates.each do |date|
       menu.ranges_of(date).each do |range|
