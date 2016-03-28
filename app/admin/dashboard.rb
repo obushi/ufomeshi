@@ -13,7 +13,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "アップロードの履歴" do
           table_for ConvertStatus.order('uploaded_at desc').limit(10) do
             column("ステータス")      {|file| status_tag(file.status) }
-            column("アップロード日時") {|file| file.uploaded_at }
+            column("アップロード日時") {|file| file.uploaded_at.strftime("%Y年%m月%d日 %H時%M分%S秒") }
             column("ファイル名")      {|file| file.file_name }
             column("開始日")         {|file| file.start_on }
             column("終了日")         {|file| file.end_on }
