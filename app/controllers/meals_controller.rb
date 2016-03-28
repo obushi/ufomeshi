@@ -1,4 +1,4 @@
-class MealController < ApplicationController
+class MealsController < ApplicationController
   @@store_dir = Meali::Application.config.menu_root
 
   def upload
@@ -15,5 +15,12 @@ class MealController < ApplicationController
     else
       redirect_back(fallback_location: "/admin/dashboard", alert: "献立ファイルを選択してください")
     end
+  end
+
+  def index
+    
+  end
+
+  def show
   end
 end

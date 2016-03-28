@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :meal, only: [:create] do
+  resources :meals, only: [:index, :show, :create] do
     collection do
       post 'upload'
     end

@@ -4,7 +4,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "献立をアップロード" do
-          form action: "/meal/upload", method: :post, enctype: "multipart/form-data" do |f|
+          form action: "/meals/upload", method: :post, enctype: "multipart/form-data" do |f|
             f.input name: "authenticity_token", type: :hidden, value: form_authenticity_token.to_s
             f.input name: "attachment", type: :file, accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             f.input type: :submit
