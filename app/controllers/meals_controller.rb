@@ -18,9 +18,10 @@ class MealsController < ApplicationController
   end
 
   def index
-    
+    @meals = Meal.today
   end
 
   def show
+    @meal = Meal.find(params[:id])
   end
 end

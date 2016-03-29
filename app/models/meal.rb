@@ -16,8 +16,8 @@ class Meal < ApplicationRecord
 
   validates_associated :dishes
 
-  # 現在から先の献立
-  scope :from_now, -> { where('date >= ?', Date.today) }
+  scope :from_now, -> { where('served_on >= ?', Date.today) }   # 現在から先の献立
+  scope :today,    -> { where(served_on: Date.today) }
 
   def self.convert(path)
     convert_status = ConvertStatus.new(
