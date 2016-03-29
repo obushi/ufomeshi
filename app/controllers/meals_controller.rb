@@ -18,10 +18,12 @@ class MealsController < ApplicationController
   end
 
   def index
-    @meals = Meal.today
+    @meals = Meal.from_now
+    render 'error404', status: 404, formats: [:html] if @meals.empty?
   end
 
   def show
-    @meal = Meal.find(params[:id])
+    @meals = Meal.daily(params[:date])
+    render 'error404', status: 404, formats: [:html] if @meals.empty?
   end
 end

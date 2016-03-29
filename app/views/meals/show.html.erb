@@ -1,1 +1,12 @@
-<h1>1日分の献立</h1>
+<h1>献立一覧</h1>
+<% @meals.each do |m| %>
+<%= m.meal_type_i18n %>
+<ul>
+  <% m.dishes.each do |d| %>
+  <li>
+    <%= d.name %>
+    <%= d.calorie %>
+  </li>
+  <% end %>
+</ul>
+<% end %>

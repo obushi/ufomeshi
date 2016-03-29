@@ -62,3 +62,9 @@ gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 
 gem 'active_skin'
+
+# Use uikit as CSS framework
+gem 'uikit-sass-rails'
+
+# To use enum value in Japanese
+gem 'enum_help'

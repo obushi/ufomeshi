@@ -1,4 +1,10 @@
 ja:
+  enums:
+    meal:
+      meal_type:
+        breakfast: 朝食
+        lunch: 昼食
+        dinner: 夕食
   activerecord:
     models:
       admin_user: 管理者
