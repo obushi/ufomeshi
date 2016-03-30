@@ -23,7 +23,7 @@ class MealsController < ApplicationController
   end
 
   def show
-    @meals = Meal.daily(params[:date])
+    @meals = Meal.daily(params[:date] || Date.today.strftime("%Y%m%d"))
     render 'error404', status: 404, formats: [:html] if @meals.empty?
   end
 end

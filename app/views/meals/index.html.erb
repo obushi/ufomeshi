@@ -1,12 +1,20 @@
-<h1>献立一覧</h1>
-<% @meals.each do |m| %>
-<%= m.meal_type_i18n %>
-<ul>
-  <% m.dishes.each do |d| %>
-  <li>
-    <%= d.name %>
-    <%= d.calorie %>
-  </li>
+<div class="uk-container uk-container-center">
+  <h1>献立一覧</h1>
+  <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-4" data-uk-grid="{gutter: 20}" style="position: relative; margin-left: -20px; height: 790px;">
+  <% @meals.each do |m| %>
+    <div data-grid-prepared="true" style="position: absolute; box-sizing: border-box; padding-left: 20px; padding-bottom: 20px; top: 0px; left: 0px; opacity: 1;">
+      <div class="uk-panel">
+      <h2><%= m.served_on.strftime("%Y年%1m月%1d日") + m.meal_type_i18n %></h2>
+      <ul>
+        <% m.dishes.each do |d| %>
+        <li>
+          <%= d.name %>
+          <%= d.calorie %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    </div>
   <% end %>
-</ul>
-<% end %>
+  </div>
+</div>

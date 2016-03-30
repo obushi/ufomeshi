@@ -19,15 +19,6 @@ class Meal < ApplicationRecord
   scope :from_now, ->        { where('served_on >= ?', Date.today) }   # 現在から先の献立
   scope :daily,    -> (date) { where(served_on: date.to_date) }
 
-  # def self.valid_date(date)
-  #   begin
-  #     return nil unless date =~ /\d{8}/
-  #     date.to_date
-  #   rescue
-  #     nil
-  #   end
-  # end
-
   def self.convert(path)
     convert_status = ConvertStatus.new(
       file_name:   File::basename(path),

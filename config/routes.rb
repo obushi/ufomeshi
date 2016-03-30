@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root 'meals#show', served_on: Date.today
+  root 'meals#show'
 
   resources :meals, only: [:index, :show], param: :date do
     collection do
