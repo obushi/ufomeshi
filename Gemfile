@@ -71,3 +71,5 @@ gem 'enum_help'
 
 # Use Haml for templete engine
 gem 'haml-rails'
+
+gem 'jquery-turbolinks'

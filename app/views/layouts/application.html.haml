@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title Meali
+    = csrf_meta_tags
+    = action_cable_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+  %body
+    .uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
+      %nav.uk-navbar.uk-margin-large-bottom
+        = link_to "Meali", root_path, { class: "uk-navbar-brand uk-hidden-small" }
+        %ul.uk-navbar-nav.uk-hidden-small
+          %li
+            = link_to "今日の献立", controller: "meals", action: "show"
+          %li
+            = link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
+        = link_to "", "#offcanvas", { class: "uk-navbar-toggle uk-visible-small", data: {"uk-offcanvas" => {target: "#offcanvas"} } }
+        .uk-navbar-brand.uk-navbar-center.uk-visible-small Meali
+      = yield
+    #offcanvas.uk-offcanvas
+      .uk-offcanvas-bar
+        %ul.uk-nav.uk-nav-offcanvas
+          %li
+            = link_to "Meali", root_path
+          %li
+            = link_to "今日の献立", controller: "meals", action: "show"
+          %li
+            = link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}

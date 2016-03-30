@@ -1,9 +1,9 @@
 ja:
   time:
     formats:
-      defalut: "%Y年%m月%d日 %H:%M:%S"
+      defalut: "%Y年%m1月%1d日 %H:%M:%S"
       short: "%y-%m-%d %H:%M:%S"
-      long: "%Y年%m月%d日 %H:%M:%S"
+      long: "%Y年%1m月%1d日 %H:%M:%S"
   date:
     abbr_day_names:
     - 日
@@ -36,9 +36,9 @@ ja:
     - 金曜日
     - 土曜日
     formats:
-      default: "%Y/%m/%d"
-      long: "%Y年%m月%d日(%a)"
-      short: "%m/%d"
+      default: "%Y/%1m/%1d(%a)"
+      long: "%Y年%1m月%1d日(%a)"
+      short: "%1m/%1d"
     month_names:
     -
     - 1月
