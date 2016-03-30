@@ -68,3 +68,6 @@ gem 'uikit-sass-rails'
 
 # To use enum value in Japanese
 gem 'enum_help'
+
+# Use Haml for templete engine
+gem 'haml-rails'
