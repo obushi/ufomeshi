@@ -23,7 +23,9 @@ class MealsController < ApplicationController
   end
 
   def show
-    @meals = Meal.daily(params[:date] || Date.today.strftime("%Y%m%d"))
+    date = params[:date]&.to_date || Date.today
+    @meals    = Meal.daily(date)
+    @forecast = Meal.forecast(date)
     render 'error404', status: 404, formats: [:html] if @meals.empty?
   end
 end

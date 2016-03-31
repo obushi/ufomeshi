@@ -6,3 +6,6 @@
       %li
         = d.name
         = d.calorie
+%ul.uk-pagination
+  - @forecast.each do |date|
+    %li= link_to(l(date, format: "%a"), meal_path(date.strftime("%Y%m%d")))

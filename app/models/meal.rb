@@ -17,7 +17,11 @@ class Meal < ApplicationRecord
   validates_associated :dishes
 
   scope :from_now, ->        { where('served_on >= ?', Date.today) }   # 現在から先の献立
-  scope :daily,    -> (date) { where(served_on: date.to_date) }
+  scope :daily,    -> (date) { where(served_on: date) }
+
+  def self.forecast(date)
+    (date.beginning_of_week(:sunday)..date.end_of_week(:sunday)).to_a
+  end
 
   def self.convert(path)
     convert_status = ConvertStatus.new(
