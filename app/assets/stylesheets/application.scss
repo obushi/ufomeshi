@@ -11,5 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require uikit.meali.min
+ *= require font-awesome
+ *= require mystyle
  */
- @import "uikit/almost-flat"; // Almost-Flat Theme

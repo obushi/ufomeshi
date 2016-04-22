@@ -64,7 +64,7 @@ gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'active_skin'
 
 # Use uikit as CSS framework
-gem 'uikit-sass-rails'
+# gem 'uikit-sass-rails', git: 'https://github.com/8398a7/uikit-sass-rails'
 
 # To use enum value in Japanese
 gem 'enum_help'

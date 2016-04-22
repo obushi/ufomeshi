@@ -1,0 +1,11 @@
+- @forecast.each do |date|
+  - formated_date = l(date, format: "%1m/%1d %a")
+  - if Meal.exists?(served_on: date)
+    - if date == @date
+      %li.uk-active.uk-contrast
+        %span= formated_date
+    - else
+      %li= link_to(formated_date, meal_path(date.strftime("%Y%m%d")), {title: formated_date+"の献立", class: "uk-contrast"})
+  - else
+    %li.uk-disabled.uk-contrast
+      %span= formated_date

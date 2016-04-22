@@ -16,11 +16,21 @@ class Meal < ApplicationRecord
 
   validates_associated :dishes
 
-  scope :from_now, ->        { where('served_on >= ?', Date.today) }   # 現在から先の献立
+  scope :from_now, ->        { where("served_on >= ?", Date.today) }   # 現在から先の献立
   scope :daily,    -> (date) { where(served_on: date) }
 
+  def self.prev(date)
+    prev_meal = Meal.where("served_on < ?", date).order(served_on: :desc).first
+    { date: prev_meal&.served_on, exists?: Meal.exists?(prev_meal) }
+  end
+
+  def self.next(date)
+    next_meal = Meal.where("served_on > ?", date).order(served_on: :asc).first
+    { date: next_meal&.served_on, exists?: Meal.exists?(next_meal) }
+  end
+
   def self.forecast(date)
-    (date.beginning_of_week(:sunday)..date.end_of_week(:sunday)).to_a
+    date.beginning_of_week(:sunday)..date.end_of_week(:sunday) if date.present?
   end
 
   def self.convert(path)

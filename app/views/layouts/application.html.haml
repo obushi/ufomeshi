@@ -12,18 +12,28 @@
         = link_to "Meali", root_path, { class: "uk-navbar-brand uk-hidden-small" }
         %ul.uk-navbar-nav.uk-hidden-small
           %li
-            = link_to "今日の献立", controller: "meals", action: "show"
+            = link_to "今日の献立", root_path
           %li
             = link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
         = link_to "", "#offcanvas", { class: "uk-navbar-toggle uk-visible-small", data: {"uk-offcanvas" => {target: "#offcanvas"} } }
         .uk-navbar-brand.uk-navbar-center.uk-visible-small Meali
       = yield
+    .tm-footer
+      - if controller.action_name == "show"
+        .uk-container.uk-container-center.uk-text-center
+          %ul.uk-pagination
+            = render partial: "forecast"
+      %ul.uk-subnav.uk-subnav-line.uk-flex-center
+        %li= link_to "", "//github.com/nryas/meali", { class: "uk-icon-hover uk-icon-github" }
+        %li= link_to "api", "#"
+        = mail_to "uforyoseikai@gmail.com", "email"
+
     #offcanvas.uk-offcanvas
       .uk-offcanvas-bar
         %ul.uk-nav.uk-nav-offcanvas
           %li
             = link_to "Meali", root_path
           %li
-            = link_to "今日の献立", controller: "meals", action: "show"
+            = link_to "今日の献立", root_path
           %li
             = link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}

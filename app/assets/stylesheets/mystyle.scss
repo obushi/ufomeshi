@@ -1,0 +1,44 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  padding-bottom: 40px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.uk-navbar {
+  background-color: rgba(235, 80, 54, 1.0);
+  a {
+    color: rgba(254, 252, 227, 1.0);
+    text-shadow: 0 1px #222;
+  }
+  ul {
+    li {
+      a {
+        color: rgba(254, 252, 227, 1.0);
+        text-shadow: 0 1px #222;
+      }
+    }
+  }
+}
+
+.tm-footer {
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  background-color: #222;
+  text-align: center;
+  font-size: 10pt;
+  ul {
+    margin: 10px auto 10px auto;
+  }
+}
+
+[class*='uk-icon-'] {
+}
