@@ -5,14 +5,14 @@ class Meal < ApplicationRecord
   enum meal_type: %w{breakfast lunch dinner}
 
   # 必須かつ一意
-  # validates :served_on, :meal_type, presence: true
-  # validates_uniqueness_of :served_on, scope: :meal_type
+  validates :served_on, :meal_type, presence: true
+  validates_uniqueness_of :served_on, scope: :meal_type
 
   # 自然数
-  # validates :calorie, :protein, :fat, :carbohydrate, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+  validates :calorie, :protein, :fat, :carbohydrate, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, allow_nil: true
 
   # 正の小数
-  # validates :salt, numericality: { greater_than_or_equal_to: 0.1 }
+  validates :salt, numericality: { greater_than_or_equal_to: 0.1 }
 
   validates_associated :dishes
 
