@@ -5,9 +5,8 @@ require_relative "./extractor/helper.rb"
 module MenuUtils
   module Extractor
     extend Helper
-    def self.create path
-      Class.new(Version(path)) do
-      end
+    def self.open path
+      version(path)
     end
   end
 end
