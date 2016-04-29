@@ -18,6 +18,7 @@ class Meal < ApplicationRecord
 
   scope :from_now, ->        { where("served_on >= ?", Date.today) }   # 現在から先の献立
   scope :daily,    -> (date) { where(served_on: date) }
+  scope :today,    ->        { where(served_on: Date.today) }
 
   def self.prev(date)
     prev_meal = Meal.where("served_on < ?", date).order(served_on: :desc).first
