@@ -59,7 +59,7 @@ class Meal < ApplicationRecord
   def self.register(menu)
     raise "献立ファイルが不正です。" unless menu.valid?
 
-    menu.meal_dates.each_with_index do |date, i|
+    menu.meal_dates.each do |date|
       menu.meals_on(date).each do |meal|
         meal_nutrients  = menu.nutrients_of(date, meal)
         meal_dishes     = menu.dishes_of(date, meal)

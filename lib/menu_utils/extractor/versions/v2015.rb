@@ -87,7 +87,7 @@ class V2015
     @csv.headers.select{ |e| e =~ /\d+\/\d+/ }
   end
 
-  # 日付文字列から献立名とカロリーを含む列の全組の配列を返す
+  # 献立の日付文字列から献立名とカロリーを含む列の全組の配列を返す
   def daily_dishes_on date
     [@csv.by_col[@csv.headers.index(date)].to_a, @csv.by_col[@csv.headers.index(date) + 2].to_a]
   end
