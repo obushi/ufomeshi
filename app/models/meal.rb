@@ -39,12 +39,12 @@ class Meal < ApplicationRecord
       uploaded_at: Time.now)
     begin
       Roo::Excelx.new(path).to_csv(path+".csv")
-      menu = MenuUtils::Extractor.create(path+".csv").new(path+".csv")
+      menu = MenuUtils::Extractor::open(path+".csv")
       register(menu)
 
       # 例外が発生せず、成功したときは 献立の開始・終了日およびステータス：正常 を記録
-      convert_status.start_on = menu.meal_dates.first.to_formated_date
-      convert_status.end_on   = menu.meal_dates.last.to_formated_date
+      convert_status.start_on = menu.to_date(menu.meal_dates.first)
+      convert_status.end_on   = menu.to_date(menu.meal_dates.last)
       convert_status.status   = 0
     rescue => e
       # 例外が発生したので 変換のステータス：異常 を記録
@@ -58,13 +58,13 @@ class Meal < ApplicationRecord
   def self.register(menu)
     raise "献立ファイルが不正です。" unless menu.valid?
 
-    menu.meal_dates.each do |date|
+    menu.meal_dates.each_with_index do |date, i|
       menu.meals_on(date).each do |meal|
         meal_nutrients  = menu.nutrients_of(date, meal)
         meal_dishes     = menu.dishes_of(date, meal)
 
         params = {
-          served_on:    date.to_formated_date,
+          served_on:    menu.to_date(date),
           meal_type:    menu.dish_ranges.index(meal),
           calorie:      menu.value_of(meal_nutrients, :calorie      ),
           protein:      menu.value_of(meal_nutrients, :protein      ),

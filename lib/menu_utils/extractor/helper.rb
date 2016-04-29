@@ -2,17 +2,11 @@ require_relative "./versions/v2015.rb"
 require_relative "./versions/v2016.rb"
 
 module Helper
-  def Version(path)
+  def version(path)
     if Regexp.union("週間献立表", "KC") =~ CSV.read(path).to_a.join
-      Class.new do
-        String.send(:include, V2015::DateFormatter)
-        include V2015::Base
-      end
+      V2015.new(path)
     else
-      Class.new do
-        String.send(:include, V2016::DateFormatter)
-        include V2016::Base
-      end
+      V2016.new(path)
     end
   end
 end
