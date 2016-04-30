@@ -17,6 +17,7 @@ class Meal < ApplicationRecord
   validates_associated :dishes
 
   scope :from_now, ->        { where("served_on >= ?", Date.today) }   # 現在から先の献立
+  scope :since_year_ago, ->  { where("served_on >= ?", 1.year.ago) }   # 1年前から現在の献立
   scope :daily,    -> (date) { where(served_on: date) }
   scope :today,    ->        { where(served_on: Date.today) }
 
