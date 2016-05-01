@@ -10,10 +10,10 @@ one:
   salt: 1.5
 
 two:
-  served_on: 2016-03-01
+  served_on: <%= Date.tomorrow %>
   meal_type: 1
   calorie: 1
   protein: 1
   fat: 1
-  carbohydrate: 1
+  carbohydrate: nil
   salt: 1.5

@@ -48,6 +48,7 @@ class Meal < ApplicationRecord
       convert_status.start_on = menu.to_date(menu.meal_dates.first)
       convert_status.end_on   = menu.to_date(menu.meal_dates.last)
       convert_status.status   = 0
+      true
     rescue => e
       # 例外が発生したので 変換のステータス：異常 を記録
       convert_status.status   = 1
