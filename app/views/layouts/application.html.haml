@@ -4,6 +4,13 @@
     %title Meali
     = csrf_meta_tags
     = action_cable_meta_tag
+    :ruby
+      meta_tags = {
+        site: "Meali",
+        description: "寮での献立を見ることができるサービスです",
+        viewport: "width=device-width, initial-scale=1.0"
+      }
+    = display_meta_tags meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
   %body
@@ -11,10 +18,8 @@
       %nav.uk-navbar.uk-margin-large-bottom
         = link_to "Meali", root_path, { class: "uk-navbar-brand uk-hidden-small" }
         %ul.uk-navbar-nav.uk-hidden-small
-          %li
-            = link_to "今日の献立", root_path
-          %li
-            = link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
+          %li= link_to "今日の献立", root_path
+          %li= link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
         = link_to "", "#offcanvas", { class: "uk-navbar-toggle uk-visible-small", data: {"uk-offcanvas" => {target: "#offcanvas"} } }
         .uk-navbar-brand.uk-navbar-center.uk-visible-small Meali
       = yield
@@ -31,9 +36,6 @@
     #offcanvas.uk-offcanvas
       .uk-offcanvas-bar
         %ul.uk-nav.uk-nav-offcanvas
-          %li
-            = link_to "Meali", root_path
-          %li
-            = link_to "今日の献立", root_path
-          %li
-            = link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
+          %li= link_to "Meali", root_path
+          %li= link_to "今日の献立", root_path
+          %li= link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}

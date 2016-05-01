@@ -1,11 +1,17 @@
 - @forecast.each do |date|
-  - formated_date = l(date, format: "%1m/%1d %a")
+  - formated_date_long = l(date, format: "%1m/%1d %a")
+  - formated_date_short = l(date, format: "%a")
   - if Meal.exists?(served_on: date)
     - if date == @date
       %li.uk-active.uk-contrast
-        %span= formated_date
+        %span.mq-large= formated_date_long
+      %li.uk-active.uk-contrast
+        %span.mq-small= formated_date_short
     - else
-      %li= link_to(formated_date, meal_path(date.strftime("%Y%m%d")), {title: formated_date+"の献立", class: "uk-contrast"})
+      %li= link_to(formated_date_long, meal_path(date.strftime("%Y%m%d")), {title: formated_date_long+"の献立", class: "uk-contrast mq-large"})
+      %li= link_to(formated_date_short, meal_path(date.strftime("%Y%m%d")), {title: formated_date_long+"の献立", class: "uk-contrast mq-small"})
   - else
     %li.uk-disabled.uk-contrast
-      %span= formated_date
+      %span.mq-large= formated_date_long
+    %li.uk-disabled.uk-contrast
+      %span.mq-small= formated_date_short

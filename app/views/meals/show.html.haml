@@ -1,13 +1,27 @@
-%h1.uk-text-center.uk-margin-large-bottom
+%h1.uk-text-center.mq-large
   = prev_date_button(@prev_meal)
-  = l(@date, format: :long)+"の献立"
+  = l(@date, format: " %Y")
+  %span.slash<> /
+  = l(@date, format: "%1m")
+  %span.slash<> /
+  = l(@date, format: "%1d")
+  %span.day= l(@date, format: "%a")
+  = next_date_button(@next_meal)
+%h1.uk-text-center.mq-small
+  = prev_date_button(@prev_meal)
+  = l(@date, format: " %1m")
+  %span.slash<> /
+  = l(@date, format: "%1d")
+  %span.day= l(@date, format: "%a")
   = next_date_button(@next_meal)
 - if controller.status == 404
   .uk-alert-warning.uk-alert-large
+    %i.uk-icon-warning
     献立は見つかりませんでした。
+  = image_tag("404.png", id: "not_found")
 .uk-grid
   - @meals.each do |m|
-    .uk-width-medium-1-3
+    .uk-width-medium-1-3.uk-grid-margin
       .uk-panel.uk-panel-box
         %h2.uk-panel-title= m.meal_type_i18n
         %ul

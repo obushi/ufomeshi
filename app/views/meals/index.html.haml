@@ -1,10 +1,22 @@
-%h1.uk-text-center.uk-margin-large-bottom 献立一覧
-%div{"data-uk-grid" => true}
+%h1.uk-text-center 献立一覧
+%div.uk-grid-margin{data: {uk: {grid: "{gutter: 20}"}}}
   - @meals.each do |m|
     .uk-width-small-1-2.uk-width-medium-1-3.uk-width-large-1-3{:style => "width=400px;"}
-      %h2= link_to(l(m.served_on, format: :default) + m.meal_type_i18n, meal_path(m.served_on.strftime("%Y%m%d")))
-      %ul
-        - m.dishes.each do |d|
-          %li
-            = d.name
-            = d.calorie
+      .uk-panel.uk-panel-box
+        %h2.mq-large
+          = l(m.served_on, format: " %Y")
+          %span.slash<> /
+          = l(m.served_on, format: "%1m")
+          %span.slash<> /
+          = l(m.served_on, format: "%1d")
+          %span.day= l(m.served_on, format: "%a")
+          =m.meal_type_i18n
+        %h2.mq-small
+          = l(m.served_on, format: " %1m")
+          %span.slash<> /
+          = l(m.served_on, format: "%1d")
+          %span.day= l(m.served_on, format: "%a")
+          =m.meal_type_i18n
+        %ul
+          - m.dishes.each do |d|
+            %li= d.name

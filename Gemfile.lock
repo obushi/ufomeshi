@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: d84f8190edac8c28f942cd4b6c3e16086da9d7a2
+  revision: 70cfbf3d7d330b901ec82dc003ab79011c37fbe5
   specs:
     activeadmin (1.0.0.pre2)
       arbre (~> 1.0, >= 1.0.2)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/activerecord-hackery/ransack.git
-  revision: ae6d58cba5fb60347fb2e64aa4940c844a42d535
+  revision: 699becb889d2c9b218575709ffb1ea6cacc7d537
   specs:
     ransack (1.7.0)
       actionpack (>= 3.0)
@@ -58,9 +58,9 @@ GIT
 
 GIT
   remote: git://github.com/rails/activemodel-serializers-xml.git
-  revision: f380ea5ddefcb9a37f4fbc47606ed6fbecdb2b2a
+  revision: 570ee7ed33d60e44ca1f3ccbec3d1fbf61d52cbf
   specs:
-    activemodel-serializers-xml (1.0.0)
+    activemodel-serializers-xml (1.0.1)
       activemodel (> 5.x)
       activerecord (> 5.x)
       activesupport (> 5.x)
@@ -69,40 +69,40 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.0.0.beta3)
-      actionpack (= 5.0.0.beta3)
+    actioncable (5.0.0.beta4)
+      actionpack (= 5.0.0.beta4)
       nio4r (~> 1.2)
       websocket-driver (~> 0.6.1)
-    actionmailer (5.0.0.beta3)
-      actionpack (= 5.0.0.beta3)
-      actionview (= 5.0.0.beta3)
-      activejob (= 5.0.0.beta3)
+    actionmailer (5.0.0.beta4)
+      actionpack (= 5.0.0.beta4)
+      actionview (= 5.0.0.beta4)
+      activejob (= 5.0.0.beta4)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (5.0.0.beta3)
-      actionview (= 5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
+    actionpack (5.0.0.beta4)
+      actionview (= 5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
       rack (~> 2.x)
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
+    actionview (5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
     active_skin (0.0.12)
-    activejob (5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
+    activejob (5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
       globalid (>= 0.3.6)
-    activemodel (5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
-    activerecord (5.0.0.beta3)
-      activemodel (= 5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
+    activemodel (5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
+    activerecord (5.0.0.beta4)
+      activemodel (= 5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
       arel (~> 7.0)
-    activesupport (5.0.0.beta3)
+    activesupport (5.0.0.beta4)
       concurrent-ruby (~> 1.0)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -117,7 +117,7 @@ GEM
       thor (~> 0.19)
     buftok (0.2.0)
     builder (3.2.2)
-    byebug (8.2.4)
+    byebug (8.2.5)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -127,7 +127,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
     debug_inspector (0.0.2)
-    devise (4.0.0)
+    devise (4.0.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -190,7 +190,7 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
-    listen (3.0.6)
+    listen (3.0.7)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     loofah (2.0.3)
@@ -199,13 +199,15 @@ GEM
       mime-types (>= 1.16, < 4)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     multipart-post (2.0.0)
     naught (1.1.0)
     nio4r (1.2.1)
@@ -219,17 +221,17 @@ GEM
       json
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (5.0.0.beta3)
-      actioncable (= 5.0.0.beta3)
-      actionmailer (= 5.0.0.beta3)
-      actionpack (= 5.0.0.beta3)
-      actionview (= 5.0.0.beta3)
-      activejob (= 5.0.0.beta3)
-      activemodel (= 5.0.0.beta3)
-      activerecord (= 5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
+    rails (5.0.0.beta4)
+      actioncable (= 5.0.0.beta4)
+      actionmailer (= 5.0.0.beta4)
+      actionpack (= 5.0.0.beta4)
+      actionview (= 5.0.0.beta4)
+      activejob (= 5.0.0.beta4)
+      activemodel (= 5.0.0.beta4)
+      activerecord (= 5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 5.0.0.beta3)
+      railties (= 5.0.0.beta4)
       sprockets-rails (>= 2.0.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -239,9 +241,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    railties (5.0.0.beta3)
-      actionpack (= 5.0.0.beta3)
-      activesupport (= 5.0.0.beta3)
+    railties (5.0.0.beta4)
+      actionpack (= 5.0.0.beta4)
+      activesupport (= 5.0.0.beta4)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
@@ -250,7 +252,7 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     request_store (1.3.1)
-    responders (2.1.2)
+    responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     roo (2.3.2)
       nokogiri (~> 1)
@@ -349,6 +351,7 @@ DEPENDENCIES
   jquery-turbolinks
   kaminari!
   listen (~> 3.0.5)
+  meta-tags
   puma
   rails (>= 5.0.0.beta3, < 5.1)
   ransack!
