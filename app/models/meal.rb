@@ -23,12 +23,12 @@ class Meal < ApplicationRecord
 
   def self.prev(date)
     prev_meal = Meal.where("served_on < ?", date).order(served_on: :desc).first
-    { date: prev_meal&.served_on, exists?: Meal.exists?(prev_meal) }
+    { date: prev_meal&.served_on, exists?: Meal.exists?(prev_meal&.id) }
   end
 
   def self.next(date)
     next_meal = Meal.where("served_on > ?", date).order(served_on: :asc).first
-    { date: next_meal&.served_on, exists?: Meal.exists?(next_meal) }
+    { date: next_meal&.served_on, exists?: Meal.exists?(next_meal&.id) }
   end
 
   def self.forecast(date)
