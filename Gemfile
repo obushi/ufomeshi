@@ -73,3 +73,6 @@ gem 'jquery-turbolinks'
 
 # For twitter bot
 gem 'twitter'
+
+# To generate meta tags easily
+gem 'meta-tags'

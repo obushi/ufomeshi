@@ -1,10 +1,18 @@
+// コンテンツが少なくてもフッターを常に最下部に表示するため
 html {
   min-height: 100%;
   position: relative;
 }
 
+// フッターのスペースを確保する
 body {
   padding-bottom: 40px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  letter-spacing: 2px;
 }
 
 ul {
@@ -13,20 +21,44 @@ ul {
 
 .uk-navbar {
   background-color: rgba(235, 80, 54, 1.0);
+}
+
+.uk-navbar,
+.uk-navbar:hover,
+.uk-navbar-brand,
+.uk-navbar:focus,
+.uk-navbar > ul > li {
+  color: #F8F8F8;
+  text-shadow: none;
+
   a {
-    color: rgba(254, 252, 227, 1.0);
-    text-shadow: 0 1px #222;
-  }
-  ul {
-    li {
-      a {
-        color: rgba(254, 252, 227, 1.0);
-        text-shadow: 0 1px #222;
-      }
-    }
+    color: #F8F8F8;
+    text-shadow: none;
   }
 }
 
+// 曜日のスタイル
+span.day {
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  text-align: center;
+  font-size: 60%;
+  color: #F9F9F9;
+  vertical-align: top;
+  background-color: #343434;
+  border-radius: 40%;
+}
+
+span.slash {
+  font-weight: lighter;
+}
+
+.uk-grid:last-child {
+  margin-bottom: 40px;
+}
+
+// フッター部分
 .tm-footer {
   width: 100%;
   z-index: 1;
@@ -40,5 +72,29 @@ ul {
   }
 }
 
-[class*='uk-icon-'] {
+// 献立が見つからない場合、画像を表示
+img#not_found {
+  display: block;
+  width: 249px;
+  height: 267px;
+  margin: 0 auto 0 auto;
+}
+
+// 日付のフォーマットは画面サイズごとに切り替える
+@media screen and (max-width: 479px) {
+  h1.mq-large,
+  h2.mq-large,
+  .uk-pagination>li>a.mq-large,
+  .uk-pagination>li>span.mq-large {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  h1.mq-small,
+  h2.mq-small,
+  .uk-pagination>li>a.mq-small,
+  .uk-pagination>li>span.mq-small {
+    display: none;
+  }
 }
