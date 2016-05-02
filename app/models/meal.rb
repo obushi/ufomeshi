@@ -36,6 +36,8 @@ class Meal < ApplicationRecord
   end
 
   def self.convert(path)
+    require "menu_utils/extractor"
+
     convert_status = ConvertStatus.new(
       file_name:   File::basename(path),
       uploaded_at: Time.now)
