@@ -31,7 +31,7 @@
       %ul.uk-subnav.uk-subnav-line.uk-flex-center
         %li= link_to "", "//github.com/nryas/meali", { class: "uk-icon-hover uk-icon-github" }
         %li= link_to "api", "#"
-        = mail_to "uforyoseikai@gmail.com", "email"
+        = mail_to ENV["YAMMY_MAIL_TO"], "email"
 
     #offcanvas.uk-offcanvas
       .uk-offcanvas-bar
