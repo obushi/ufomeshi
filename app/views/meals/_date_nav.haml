@@ -1,0 +1,16 @@
+%h1.uk-text-center.mq-large
+  = prev_date_button(@prev_meal)
+  = l(@date, format: " %Y")
+  %span.slash<> /
+  = l(@date, format: "%1m")
+  %span.slash<> /
+  = l(@date, format: "%1d")
+  %span.day= l(@date, format: "%a")
+  = next_date_button(@next_meal)
+%h1.uk-text-center.mq-small
+  = prev_date_button(@prev_meal)
+  = l(@date, format: " %1m")
+  %span.slash<> /
+  = l(@date, format: "%1d")
+  %span.day= l(@date, format: "%a")
+  = next_date_button(@next_meal)
