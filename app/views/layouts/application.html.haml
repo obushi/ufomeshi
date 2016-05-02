@@ -22,20 +22,9 @@
           %li= link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
         = link_to "", "#offcanvas", { class: "uk-navbar-toggle uk-visible-small", data: {"uk-offcanvas" => {target: "#offcanvas"} } }
         .uk-navbar-brand.uk-navbar-center.uk-visible-small Yammy
-      = yield
-    .tm-footer
       - if controller.action_name == "show"
-        .uk-container.uk-container-center.uk-text-center
-          %ul.uk-pagination
-            = render partial: "forecast"
-      %ul.uk-subnav.uk-subnav-line.uk-flex-center
-        %li= link_to "", "//github.com/nryas/yammy", { class: "uk-icon-hover uk-icon-github" }
-        %li= link_to "api", "#"
-        = mail_to ENV["YAMMY_MAIL_TO"], "email"
-
-    #offcanvas.uk-offcanvas
-      .uk-offcanvas-bar
-        %ul.uk-nav.uk-nav-offcanvas
-          %li= link_to "Yammy", root_path
-          %li= link_to "今日の献立", root_path
-          %li= link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
+        = render partial: "date_nav"
+      - elsif controller.action_name == "index"
+        %h1.uk-text-center 献立一覧
+      = yield
+    = render partial: "footer"
