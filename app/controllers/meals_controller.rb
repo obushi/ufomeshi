@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-  @@store_dir = Meali::Application.config.menu_root
+  @@store_dir = Yammy::Application.config.menu_root
 
   def upload
     excel_file = params[:attachment]
