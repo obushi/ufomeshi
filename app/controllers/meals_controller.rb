@@ -19,7 +19,7 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.from_now
-    render 'error404', status: 404, formats: [:html] if @meals.empty?
+    render 'meal404', status: 404, formats: [:html] if @meals.empty?
   end
 
   def show
@@ -28,6 +28,6 @@ class MealsController < ApplicationController
     @next_meal = Meal.next(@date)
     @meals     = Meal.daily(@date)
     @forecast  = Meal.forecast(@date).to_a
-    render 'show', status: 404, formats: [:html] if @meals.empty?
+    render 'meal404', status: 404, formats: [:html] if @meals.empty?
   end
 end
