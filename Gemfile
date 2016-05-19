@@ -54,7 +54,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Access Microsoft Excel files
-gem 'roo'
+gem 'roo', github: 'nryas/roo'
 
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
