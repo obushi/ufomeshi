@@ -8,6 +8,7 @@ class MealsController < ApplicationController
       FileUtils.mv(excel_file.path, File.join(@@store_dir, excel_file.original_filename))
       begin
         xlsx_path = File.join(@@store_dir, excel_file.original_filename)
+        Meal.convert(xlsx_path)
         redirect_back(fallback_location: "/admin/dashboard", notice: "アップロードしました")
       rescue => e
         redirect_back(fallback_location: "/admin/dashboard", alert: "エラー:#{e.message}")
