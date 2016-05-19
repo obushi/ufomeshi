@@ -6,10 +6,10 @@ module Helper
   def version(path)
     if Regexp.union("週間献立表", "KC") === CSV.read(path).to_a.join
       V2015.new(path)
-    elsif Regexp.union("表示", "エネルギー") === CSV.read(path).to_a.join
-      V2016MAY.new(path)
-    else
+    elsif /(エネルギー蛋白質脂質塩分){2,}/ === CSV.read(path).to_a.join
       V2016.new(path)
+    else
+      V2016MAY.new(path)
     end
   end
 end
