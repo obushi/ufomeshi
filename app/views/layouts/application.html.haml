@@ -21,7 +21,8 @@
           %li= link_to "今日の献立", root_path
           %li= link_to "献立一覧", { controller: "meals", action: "index" }, data: {turbolinks: false}
         = link_to "", "#offcanvas", { class: "uk-navbar-toggle uk-visible-small", data: {"uk-offcanvas" => {target: "#offcanvas"} } }
-        .uk-navbar-brand.uk-navbar-center.uk-visible-small Yammy
+        .uk-navbar-brand.uk-navbar-center.uk-visible-small
+          = link_to "Yammy", root_path
       - if controller.action_name == "show"
         = render partial: "date_nav"
       - elsif controller.action_name == "index"
