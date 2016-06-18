@@ -79,6 +79,7 @@ gem 'jquery-turbolinks'
 
 # For twitter bot
 gem 'twitter'
+gem 'whenever', :require => false
 
 # To generate meta tags easily
 gem 'meta-tags'
