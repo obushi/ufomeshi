@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -46,14 +46,15 @@ group :development, :production do
 end
 
 group :production do
-  gem 'pg', '0.18.4'
+  # Use Unicorn as the app server
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Access Microsoft Excel files
-gem 'roo'
+gem 'roo', github: 'nryas/roo'
 
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
@@ -78,6 +79,7 @@ gem 'jquery-turbolinks'
 
 # For twitter bot
 gem 'twitter'
+gem 'whenever', :require => false
 
 # To generate meta tags easily
 gem 'meta-tags'

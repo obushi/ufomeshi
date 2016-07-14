@@ -27,5 +27,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  # match '*path' => 'application#error404', via: :all
 end

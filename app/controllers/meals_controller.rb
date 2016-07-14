@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-  @@store_dir = Meali::Application.config.menu_root
+  @@store_dir = Yammy::Application.config.menu_root
 
   def upload
     excel_file = params[:attachment]
@@ -8,6 +8,7 @@ class MealsController < ApplicationController
       FileUtils.mv(excel_file.path, File.join(@@store_dir, excel_file.original_filename))
       begin
         xlsx_path = File.join(@@store_dir, excel_file.original_filename)
+        Meal.convert(xlsx_path)
         redirect_back(fallback_location: "/admin/dashboard", notice: "アップロードしました")
       rescue => e
         redirect_back(fallback_location: "/admin/dashboard", alert: "エラー:#{e.message}")
@@ -19,7 +20,7 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.from_now
-    render 'error404', status: 404, formats: [:html] if @meals.empty?
+    render 'meal404', status: 404, formats: [:html] if @meals.empty?
   end
 
   def show
@@ -28,6 +29,6 @@ class MealsController < ApplicationController
     @next_meal = Meal.next(@date)
     @meals     = Meal.daily(@date)
     @forecast  = Meal.forecast(@date).to_a
-    render 'show', status: 404, formats: [:html] if @meals.empty?
+    render 'meal404', status: 404, formats: [:html] if @meals.empty?
   end
 end

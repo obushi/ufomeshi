@@ -21,7 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Mealiについて" do
+        panel "Yammyについて" do
           render "about"
         end
       end
