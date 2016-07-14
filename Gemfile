@@ -36,7 +36,7 @@ group :development, :test do
   gem 'byebug'
 end
 
-group :development, :production do
+group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'
