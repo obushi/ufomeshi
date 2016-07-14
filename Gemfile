@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta3', '< 5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'rails', '~> 5.0'
+# Use postgress as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
@@ -58,12 +58,11 @@ gem 'roo', github: 'nryas/roo'
 
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
-gem 'devise',      '> 4.x'
-gem 'rspec-rails', '>= 3.5.0.beta1'
-gem 'ransack',    github: 'activerecord-hackery/ransack'
-gem 'kaminari',   github: 'amatsuda/kaminari', branch: '0-17-stable'
-gem 'formtastic', github: 'justinfrench/formtastic'
-gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'ransack',             github: 'activerecord-hackery/ransack'
+gem 'draper',              '> 3.x'
+gem 'devise'
+
 # To fix a Draper deprecation error
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 
